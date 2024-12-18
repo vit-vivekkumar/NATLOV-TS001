@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'snapshottest',
     'rest_framework',
+    'drf_yasg',
     'students',
     'courses',
 ]
@@ -81,6 +83,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
+#test
+TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
