@@ -84,7 +84,7 @@ REST_FRAMEWORK = {
     ],
 }
 #test
-TEST_RUNNER = "django.test.runner.DiscoverRunner"
+TEST_RUNNER = "snapshottest.django.DjangoTestRunner"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
