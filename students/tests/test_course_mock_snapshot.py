@@ -45,8 +45,6 @@ class CourseMockSnapshotTestCase(APITestCase, snapshottest.TestCase):
 
             mock_create.assert_called_once_with(name=data["name"], code=data["code"], department=self.department)
 
-            # Snapshot the response data
-            # self.assertMatchSnapshot(response.data)
 
     def test_get_course_list_with_mock(self):
         # Mocking the `Course.objects.all` method
@@ -66,8 +64,3 @@ class CourseMockSnapshotTestCase(APITestCase, snapshottest.TestCase):
             # Assert the response status
             self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-            # Snapshot the response data
-            # self.assertMatchSnapshot(response.data)
-
-            # Ensure that the mocked `Course.objects.all` was called
-            # mock_all.assert_called_once()
