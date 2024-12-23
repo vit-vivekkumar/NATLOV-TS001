@@ -13,14 +13,20 @@ class CourseMockSnapshotTestCase(APITestCase, snapshottest.TestCase):
         self.department = Department.objects.create(name="Computer Science")
 
         # Create a user for basic authentication
-        self.user = User.objects.create_user(username='testuser', password='password123')
+        self.user = User.objects.create_user(
+            username="testuser", password="password123"
+        )
 
         # URL for the course API
         self.course_url = reverse("course-list")  # Adjust based on your route name
 
         # Create some courses for GET testing
-        self.course1 = Course.objects.create(name="Python Programming", code="ITA0043", department=self.department)
-        self.course2 = Course.objects.create(name="Data Structures", code="ITA0044", department=self.department)
+        self.course1 = Course.objects.create(
+            name="Python Programming", code="ITA0043", department=self.department
+        )
+        self.course2 = Course.objects.create(
+            name="Data Structures", code="ITA0044", department=self.department
+        )
 
     def test_post_course_with_mock(self):
         # Mocking the `Course.objects.create` method
@@ -29,38 +35,50 @@ class CourseMockSnapshotTestCase(APITestCase, snapshottest.TestCase):
             data = {
                 "name": "Machine Learning",
                 "code": "ITA0050",
-                "department": self.department.id
+                "department": self.department.id,
             }
 
             # Mock the return value of `create`
-            mock_create.return_value = Course(id=3, name=data["name"], code=data["code"], department=self.department)
+            mock_create.return_value = Course(
+                id=3, name=data["name"], code=data["code"], department=self.department
+            )
 
             # Authenticate the user using Basic Authentication
-            self.client.login(username='testuser', password='password123')
+            self.client.login(username="testuser", password="password123")
 
             # Perform POST request
             response = self.client.post(self.course_url, data, format="json")
             # Assert the response status
             self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-            mock_create.assert_called_once_with(name=data["name"], code=data["code"], department=self.department)
-
+            mock_create.assert_called_once_with(
+                name=data["name"], code=data["code"], department=self.department
+            )
 
     def test_get_course_list_with_mock(self):
         # Mocking the `Course.objects.all` method
         with patch("students.models.Course.objects.all") as mock_all:
             # Define mocked courses data
             mock_all.return_value = [
-                Course(id=1, name="Python Programming", code="ITA0043", department=self.department),
-                Course(id=2, name="Data Structures", code="ITA0044", department=self.department),
+                Course(
+                    id=1,
+                    name="Python Programming",
+                    code="ITA0043",
+                    department=self.department,
+                ),
+                Course(
+                    id=2,
+                    name="Data Structures",
+                    code="ITA0044",
+                    department=self.department,
+                ),
             ]
 
             # Authenticate the user using Basic Authentication
-            self.client.login(username='testuser', password='password123')
+            self.client.login(username="testuser", password="password123")
 
             # Perform GET request
             response = self.client.get(self.course_url, format="json")
 
             # Assert the response status
             self.assertEqual(response.status_code, status.HTTP_200_OK)
-
