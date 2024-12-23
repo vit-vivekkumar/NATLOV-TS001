@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class StudentsConfig(AppConfig):
+class SlackmessageConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "students"
+    name = "slackMessage"
 
     def ready(self):
-        import students.signals  # Import the signals file
+        import slackMessage.signals
