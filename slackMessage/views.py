@@ -7,9 +7,8 @@ logger = logging.getLogger(__name__)
 
 SLACK_CHANNEL = "#all-natlov-ts001"
 WEBHOOK_URL = (
-    "https://hooks.slack.com/services/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"
+    "https://hooks.slack.com/services/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"
 )
-
 
 def send_slack_message(user_id, effect, message):
     """

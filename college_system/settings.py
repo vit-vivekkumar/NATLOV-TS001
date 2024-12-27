@@ -89,7 +89,9 @@ REST_FRAMEWORK = {
     ],
 }
 # test
-TEST_RUNNER = "snapshottest.django.DjangoTestRunner"
+# TEST_RUNNER = "snapshottest.django.DjangoTestRunner"
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -173,3 +175,9 @@ LOGGING = {
         },
     },
 }
+
+#SQS
+AWS_ACCESS_KEY_ID = "test"
+AWS_SECRET_ACCESS_KEY = "test"
+AWS_REGION_NAME = "us-east-1"
+AWS_SQS_ENDPOINT_URL = "http://localhost:4566"  # LocalStack endpoint for SQS
