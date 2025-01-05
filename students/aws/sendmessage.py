@@ -1,7 +1,7 @@
 import boto3
 from botocore.exceptions import NoCredentialsError
 
-# Initialize a session using LocalStack
+# Initialize a session using LocalStack git auth test
 sqs = boto3.client(
     'sqs',
     aws_access_key_id='test',
