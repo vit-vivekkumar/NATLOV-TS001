@@ -60,6 +60,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "college_system.urls"
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",  # Replace with your Redis server's address
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # Optionally, add a password if Redis is secured
+            # "PASSWORD": "your_redis_password",
+        },
+        # "KEY_PREFIX": "myapp",  # Optional prefix for cache keys
+    }
+}
 
 TEMPLATES = [
     {

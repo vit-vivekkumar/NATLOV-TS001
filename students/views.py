@@ -15,7 +15,7 @@ from .serializers import (
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-
+#new undo
 
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
