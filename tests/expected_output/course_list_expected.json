@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "OPPS",
+        "code": "5465",
+        "department": 1
+    },
+    {
+        "id": 2,
+        "name": "Python Programming",
+        "code": "6764",
+        "department": 1
+    },
+    {
+        "id": 3,
+        "name": "DSA",
+        "code": "4542",
+        "department": 1
+    }
+]

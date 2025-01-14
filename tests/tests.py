@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from snapshottest.django import TestCase as SnapshotTestCase
 from students.models import Course, Department
+import json
 
 
 class MyViewTests(TestCase):
@@ -22,27 +23,9 @@ class MyViewTests(TestCase):
         # Check HTTP status
         self.assertEqual(response.status_code, 200)
 
-        # Check the response JSON structure
-        expected_data = [
-            {
-                "id": 1,
-                "name": "OPPS",
-                "code": "5465",
-                "department": 1
-            },
-            {
-                "id": 2,
-                "name": "Python Programming",
-                "code": "6764",
-                "department": 1
-            },
-            {
-                "id": 3,
-                "name": "DSA",
-                "code": "4542",
-                "department": 1
-            }
-        ]
+        # Load the expected data from the JSON file
+        with open('tests/expected_output/course_list_expected.json', 'r') as f:
+            expected_data = json.load(f)
 
         # Compare the actual and expected response data
         self.assertEqual(response.json(), expected_data)
